@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Fruit Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header-title">Live Fruit Detection</h1>
+    </header>
+
+    <div class="main-container">
+        <div class="dashboard">
+            <div class="left-panel">
+                <img id="videoFeed" src="{{ url_for('live_detection') }}" width="640" height="480" style="border: 3px solid #4caf50;">
+                <p id="statusMessage" style="margin-top: 10px; font-weight: bold;">Detecting...</p>
+            </div>
+            <div class="right-panel">
+                <button id="stopBtn" class="main-button">Stop Detecting</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Amrit Raj, Jagadhish. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const stopBtn = document.getElementById("stopBtn");
+        const statusMessage = document.getElementById("statusMessage");
+        const videoFeed = document.getElementById("videoFeed");
+    
+        stopBtn.addEventListener("click", () => stopCamera("Camera Closed with Stop Button!"));
+    
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") stopCamera("Camera Closed with ESC Key!");
+        });
+    
+        function stopCamera(reason) {
+            fetch("/stop-camera").then(() => {
+                fetch("/static/stop_reason.txt")
+                    .then(response => response.text())
+                    .then(text => {
+                        statusMessage.innerText = text || reason;
+                        videoFeed.style.display = "none";
+                        setTimeout(() => window.location.href = "/", 3000);
+                    });
+            });
+        }
+    
+        // ✨ Polling every 1 second to check if backend stopped the camera due to gesture
+        setInterval(() => {
+            fetch("/static/stop_reason.txt")
+                .then(response => response.text())
+                .then(text => {
+                    if (text && text.includes("Thumbs up")) {
+                        statusMessage.innerText = text;
+                        videoFeed.style.display = "none";
+                        setTimeout(() => window.location.href = "/", 3000);
+                    }
+                });
+        }, 1000);
+    </script>
+    
+
+</body>
+</html>

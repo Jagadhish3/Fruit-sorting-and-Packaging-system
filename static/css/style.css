@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #a8e063, #56ab2f);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.left-panel, .right-panel {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.upload-box {
+    width: 100%;
+    max-width: 350px;
+    height: 350px;
+    border: 2px dashed #4caf50;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s;
+}
+
+.upload-box:hover {
+    border-color: #388e3c;
+}
+
+.upload-text {
+    color: #555;
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+.upload-text i {
+    margin-right: 8px;
+}
+
+.upload-box:hover .upload-text {
+    color: #333;
+}
+
+#imageUpload {
+    display: none;
+}
+
+.img-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#predictButton, #resetButton, #predictAnotherButton {
+    padding: 12px 25px;
+    margin: 15px 0;
+    font-size: 1rem;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#predictButton:hover, #resetButton:hover, #predictAnotherButton:hover {
+    background-color: #388e3c;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #4caf50;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    display: none;
+    margin: 20px 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.result-text {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f0f0f0;
+    margin-top: auto;
+}
+
+.upload-message{
+    position: absolute;
+    bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    color: green;
+}
+
+#fruitCounts{
+    text-align: center;
+}
+
+.main-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+.main-button:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Fruit Sorting and Packaging System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header-title">Autonomous Fruit Sorting and Packaging System</h1>
+    </header>
+
+    <div class="main-container">
+
+        <div class="dashboard">
+
+            <div class="left-panel">
+                <div class="upload-box" id="uploadBox">
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <label for="imageUpload" class="upload-text">
+                        <i class="fas fa-upload"></i> Click or Drag to Upload
+                    </label>
+                    <div class="img-preview" id="imagePreview"></div>
+                    <div class="upload-message" id="uploadMessage"></div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <button id="predictButton">Predict Fruit Type</button>
+                <div class="loader" id="loader"></div>
+                <p class="result-text" id="resultText"></p>
+                <div id="fruitCounts" style="margin-top: 20px;">
+                    <h3>Fruits Bucket:</h3>
+                    <p id="fruitCountsText"></p>
+                </div>
+                <button id="resetButton" style="margin-top:20px;">Reset Counts</button>
+                <button id="predictAnotherButton" style="margin-top: 20px; display: none;">Predict Another Fruit</button>
+                <button id="liveDetectButton" class="main-button">Live Detection</button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Amrit Raj, Jagadhish. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
